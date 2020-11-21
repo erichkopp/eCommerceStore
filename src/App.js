@@ -18,7 +18,8 @@ const productCategories = {
 const allProducts = [
   {
     name: "Canon AT-1",
-    description: "In fully working condition",
+    description:
+      '<div>In fully working condition</div><ul class="prodDescriptionList"><div>12-POINT CERTIFIED:</div><li>Standard CLA</li><li>Rangefinder / focus calibrated</li><li>All shutter speeds working</li></ul>',
     image: "canon_at1.jpg",
     price: "199.99",
     category: "Cameras",
@@ -26,7 +27,8 @@ const allProducts = [
   },
   {
     name: "Praktica PL Nova I",
-    description: "In fully working condition",
+    description:
+      '<div>In fully working condition</div><ul class="prodDescriptionList"><div>12-POINT CERTIFIED:</div><li>Standard CLA</li><li>Rangefinder / focus calibrated</li><li>All shutter speeds working</li></ul>',
     image: "praktica_pl_nova_i.jpg",
     price: "99.99",
     category: "Cameras",
@@ -34,7 +36,8 @@ const allProducts = [
   },
   {
     name: "Werra 3",
-    description: "In fully working condition",
+    description:
+      '<div>In fully working condition</div><ul class="prodDescriptionList"><div>12-POINT CERTIFIED:</div><li>Standard CLA</li><li>Rangefinder / focus calibrated</li><li>All shutter speeds working</li></ul>',
     image: "werra_3.jpg",
     price: "74.99",
     category: "Cameras",
@@ -42,7 +45,8 @@ const allProducts = [
   },
   {
     name: "Beirette VS",
-    description: "In fully working condition",
+    description:
+      '<div>In fully working condition</div><ul class="prodDescriptionList"><div>12-POINT CERTIFIED:</div><li>Standard CLA</li><li>Rangefinder / focus calibrated</li><li>All shutter speeds working</li></ul>',
     image: "beirette_vs.jpg",
     price: "64.99",
     category: "Cameras",
@@ -50,7 +54,8 @@ const allProducts = [
   },
   {
     name: "Voigtlander Vites",
-    description: "In fully working condition",
+    description:
+      '<div>In fully working condition</div><ul class="prodDescriptionList"><div>12-POINT CERTIFIED:</div><li>Standard CLA</li><li>Rangefinder / focus calibrated</li><li>All shutter speeds working</li></ul>',
     image: "voigtlander_vitessa_126_cs.jpg",
     price: "55.99",
     category: "Cameras",
@@ -143,10 +148,15 @@ export default function App() {
 
   const handleProductClick = (product) => {
     setProduct(product);
+    window.scrollTo(0, 0);
   };
 
   const handleAddToCartClick = (product) => {
+    if (product.qty === undefined) {
+      product.qty = 1;
+    }
     setCart([...cart, product]);
+    window.scrollTo(0, 0);
   };
 
   const handleClearCart = () => {
@@ -169,7 +179,11 @@ export default function App() {
 
       <Switch>
         <Route exact path="/">
-          <Home />
+          <Home
+            allProducts={allProducts}
+            handleProductClick={handleProductClick}
+            handleAddToCartClick={handleAddToCartClick}
+          />
         </Route>
         <Route path="/category">
           <Category

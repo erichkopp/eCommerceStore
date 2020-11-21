@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 
 export default function Category(props) {
   const [imgHeight, setImgHeight] = useState();
@@ -38,18 +38,15 @@ export default function Category(props) {
     }
   }
 
-  return (
+  // const handleAddToCartClick = (product) => {
+  //   product.qty = 1;
+  //   // console.log(product);
+  //   props.handleAddToCartClick(product);
+  // };
+
+  return props.category ? (
     <div className="category">
-      <div className="breadcrumbs">
-        {/* <Link
-          to="/category"
-          onClick={props.handleCategoryClick}
-          id={props.category}
-        >
-          {props.category}
-        </Link>
-        {" > "}
-        {props.category === props.subCategory ? "All" : props.subCategory} */}
+      <div className="catPageTitle">
         {props.subCategory ? props.subCategory : props.category}
       </div>
 
@@ -74,6 +71,7 @@ export default function Category(props) {
                 ></img>
                 <Link
                   to="/viewcart"
+                  // onClick={() => handleAddToCartClick(products[product])}
                   onClick={() => props.handleAddToCartClick(products[product])}
                 >
                   <div
@@ -107,5 +105,7 @@ export default function Category(props) {
         ))}
       </div>
     </div>
+  ) : (
+    <Redirect to="/" />
   );
 }

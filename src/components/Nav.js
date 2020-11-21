@@ -7,7 +7,7 @@ export default function Nav(props) {
 
   useEffect(() => {
     const handleScroll = () => {
-      window.scrollY > 0 ? setWindowScroll(true) : setWindowScroll(false);
+      window.scrollY > 50 ? setWindowScroll(true) : setWindowScroll(false);
     };
 
     window.addEventListener("scroll", handleScroll);
