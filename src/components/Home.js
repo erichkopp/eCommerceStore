@@ -12,7 +12,7 @@ export default function Home(props) {
   ];
 
   const [bannerOpacity, setBannerOpacity] = useState(1);
-  const [bannerPosition, setBannerPosition] = useState(50);
+  const [bannerPosition, setBannerPosition] = useState(0);
   const [imgHeight, setImgHeight] = useState();
   const imageRef = React.createRef();
 
@@ -28,11 +28,10 @@ export default function Home(props) {
         setBannerOpacity(1);
         // setBannerPosition(50);
       } else {
-        // setBannerOpacity((window.innerHeight / window.scrollY) * 0.1);
         setBannerOpacity(
           (window.innerHeight - window.scrollY / 2) / window.innerHeight
         );
-        setBannerPosition((bannerPosition - window.scrollY + 100) / 5);
+        setBannerPosition((bannerPosition - window.scrollY) / 20);
       }
     };
 

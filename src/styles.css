@@ -8,6 +8,10 @@
   letter-spacing: 0.1rem;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 a {
   text-decoration: none;
   color: inherit;
@@ -135,9 +139,11 @@ a {
   min-width: 100vw;
   left: 50%;
   transform: translateX(-50%);
+  margin-top: 50px;
 }
 
 .homeContent {
+  margin-top: 200vh;
   position: relative;
   /* margin-top: 550px; */
   background: #ffffff;
