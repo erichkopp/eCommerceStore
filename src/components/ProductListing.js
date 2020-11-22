@@ -69,7 +69,7 @@ export default function ProductListing(props) {
                     className="qtyArrowUp"
                     onClick={() => setProdQty(prodQty + 1)}
                   >
-                    /\
+                    <i class="fas fa-caret-up"></i>
                   </div>
                   <div
                     className="qtyArrowDown"
@@ -77,7 +77,7 @@ export default function ProductListing(props) {
                       prodQty - 1 <= 0 ? setProdQty(1) : setProdQty(prodQty - 1)
                     }
                   >
-                    \/
+                    <i class="fas fa-caret-down"></i>
                   </div>
                 </div>
               </div>

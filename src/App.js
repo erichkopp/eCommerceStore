@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { Route, Switch } from "react-router-dom";
-// import TopLinks from "./TopLinks";
 import Nav from "./components/Nav";
 import Home from "./components/Home";
 import Category from "./components/Category";

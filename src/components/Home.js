@@ -11,10 +11,37 @@ export default function Home(props) {
     props.allProducts[8]
   ];
 
+  const [bannerOpacity, setBannerOpacity] = useState(1);
+  const [bannerPosition, setBannerPosition] = useState(50);
   const [imgHeight, setImgHeight] = useState();
   const imageRef = React.createRef();
 
   const [imgHover, setImgHover] = useState(false);
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY === 0) {
+        setBannerOpacity(1);
+        // setBannerPosition(50);
+      } else {
+        // setBannerOpacity((window.innerHeight / window.scrollY) * 0.1);
+        setBannerOpacity(
+          (window.innerHeight - window.scrollY / 2) / window.innerHeight
+        );
+        setBannerPosition((bannerPosition - window.scrollY + 100) / 5);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  });
 
   useEffect(() => {
     const handleResize = () => {
@@ -31,19 +58,16 @@ export default function Home(props) {
     };
   });
 
-  // const handleAddToCartClick = (product) => {
-  //   product.qty = 1;
-  //   // console.log(product);
-  //   props.handleAddToCartClick(product);
-  // };
-
   return (
     <div className="home">
-      <img
-        src="https://erichkopp.github.io/eCommerceStore/wallpaper1.jpg"
-        alt="Home Banner"
-        className="homeBanner"
-      />
+      <div className="bannerContainer">
+        <img
+          src="https://erichkopp.github.io/eCommerceStore/wallpaper1.jpg"
+          alt="Home Banner"
+          className="homeBanner"
+          style={{ opacity: bannerOpacity, top: `${bannerPosition}px` }}
+        />
+      </div>
       <div className="homeContent">
         <div className="homeTitle">Featured Products</div>
         <div className="categoryListingsWrapper">
@@ -67,7 +91,6 @@ export default function Home(props) {
                   ></img>
                   <Link
                     to="/viewcart"
-                    // onClick={() => handleAddToCartClick(products[product])}
                     onClick={() =>
                       props.handleAddToCartClick(products[product])
                     }

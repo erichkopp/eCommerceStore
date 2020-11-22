@@ -38,12 +38,6 @@ export default function Category(props) {
     }
   }
 
-  // const handleAddToCartClick = (product) => {
-  //   product.qty = 1;
-  //   // console.log(product);
-  //   props.handleAddToCartClick(product);
-  // };
-
   return props.category ? (
     <div className="category">
       <div className="catPageTitle">
@@ -71,7 +65,6 @@ export default function Category(props) {
                 ></img>
                 <Link
                   to="/viewcart"
-                  // onClick={() => handleAddToCartClick(products[product])}
                   onClick={() => props.handleAddToCartClick(products[product])}
                 >
                   <div

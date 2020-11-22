@@ -27,6 +27,11 @@ a {
   height: 100px;
 }
 
+#mainNav,
+#shopCategories {
+  top: 0;
+}
+
 #mainNav {
   transition: 0.4s;
   transition-timing-function: ease-in;
@@ -35,7 +40,7 @@ a {
   justify-content: space-between;
   align-items: center;
   height: 120px;
-  width: 100%;
+  width: 100vw;
   background: #ffffff;
   z-index: 10;
   /* border-bottom: 1px solid #5ff667; */
@@ -82,9 +87,8 @@ a {
   /* position: relative; */
 }
 
-.navShop::after {
-  content: "⌄";
-  font-size: 1rem;
+.navShop i {
+  padding-left: 3px;
 }
 
 #shopCategories {
@@ -118,10 +122,27 @@ a {
   margin-right: 10px;
 }
 
+.bannerContainer {
+  height: 100vh;
+}
+
 .homeBanner {
   /* position: absolute; */
   /* left: 0; */
-  width: 100%;
+  /* width: 100%; */
+  position: fixed;
+  top: 50px;
+  min-width: 100vw;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.homeContent {
+  position: relative;
+  /* margin-top: 550px; */
+  background: #ffffff;
+  padding-top: 120px;
+  padding-bottom: 120px;
 }
 
 .homeTitle {
@@ -173,7 +194,7 @@ a {
 
 .category,
 .productListing,
-.home,
+/* .home, */
 .viewCart,
 .pageNotFound {
   padding-top: 120px;
@@ -360,6 +381,31 @@ a {
   /* padding: 20px; */
 }
 
+.qtyArrows {
+  display: flex;
+  flex-direction: column;
+  height: 52px;
+  justify-content: center;
+  background: #e4e4e4;
+}
+
+/* .qtyArrowUp,
+.qtyArrowDown {
+  transition: 0.2;
+} */
+
+.qtyArrowUp i,
+.qtyArrowDown i {
+  padding: 5px;
+}
+
+.qtyArrowUp:hover,
+.qtyArrowDown:hover {
+  cursor: pointer;
+  background: #a9a9a9;
+  transition: 0.5s;
+}
+
 .addToCartBtn {
   background: #222222;
   color: #ffffff;
@@ -378,6 +424,39 @@ a {
 }
 
 .footer {
+  position: relative;
+  color: #ffffff;
   background: #222222;
   height: 30vh;
+  align-items: center;
+  display: flex;
+  padding-left: 30px;
+  padding-right: 30px;
+}
+
+.footerLeft,
+.footerRight {
+  width: 50%;
+}
+
+.footerLeft ul {
+  display: flex;
+  justify-content: space-between;
+  list-style: none;
+}
+
+.footerLeft ul li {
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.footerRight {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.footerRight a {
+  font-size: 1.5rem;
+  padding-left: 20px;
+  padding-right: 20px;
 }

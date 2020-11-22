@@ -4,10 +4,24 @@ import { Link } from "react-router-dom";
 export default function Nav(props) {
   const [show, setShow] = useState(false);
   const [windowScroll, setWindowScroll] = useState(false);
+  const [logoFadeIn, setLogoFadeIn] = useState(true);
 
   useEffect(() => {
+    // const handleScroll = () => {
+    //   window.scrollY > 50 ? setWindowScroll(true) : setWindowScroll(false);
+    // };
     const handleScroll = () => {
-      window.scrollY > 50 ? setWindowScroll(true) : setWindowScroll(false);
+      if (window.scrollY > 50) {
+        setWindowScroll(true);
+        setLogoFadeIn(false);
+      } else {
+        setWindowScroll(false);
+        let timer = setTimeout(() => setLogoFadeIn(true), 1000);
+
+        return () => {
+          clearTimeout(timer);
+        };
+      }
     };
 
     window.addEventListener("scroll", handleScroll);
@@ -33,27 +47,33 @@ export default function Nav(props) {
               <li>Home</li>
             </Link>
             <li
+              className="navShop"
               onMouseEnter={() => setShow(true)}
               onMouseLeave={() => setShow(false)}
             >
               Shop
+              <i class="fas fa-chevron-down"></i>
             </li>
             <li>About</li>
             <li>Contact</li>
           </ul>
         </div>
 
-        <Link to="/">
-          {/* <div id="logo">LOGO</div> */}
-          <img
-            id="logo"
-            src="https://erichkopp.github.io/eCommerceStore/logo.jpg"
-            alt="Vintage Camera Stores Logo"
+        {logoFadeIn && (
+          <Link
+            to="/"
             style={{
-              opacity: windowScroll ? "0" : "1"
+              visibility: windowScroll ? "hidden" : "visible"
             }}
-          />
-        </Link>
+          >
+            {/* <div id="logo">LOGO</div> */}
+            <img
+              id="logo"
+              src="https://erichkopp.github.io/eCommerceStore/logo.jpg"
+              alt="Vintage Camera Stores Logo"
+            />
+          </Link>
+        )}
 
         <div id="navBarRight">
           <ul>
