@@ -1,10 +1,15 @@
 import React, { useState, useEffect } from "react";
 import { Link, Redirect } from "react-router-dom";
+// import canon_at1 from "../img/canon_at1.jpg";
 
 export default function ProductListing(props) {
   const [prodQty, setProdQty] = useState(1);
   const [imgHeight, setImgHeight] = useState("500");
   const imageRef = React.createRef();
+
+  // Create immutable deep copy
+  // let product = JSON.parse(JSON.stringify(props.product));
+  let product = props.product;
 
   useEffect(() => {
     const handleResize = () => {
@@ -21,43 +26,45 @@ export default function ProductListing(props) {
     };
   });
 
-  const handleAddToCartClick = () => {
-    props.product.qty = prodQty;
-    props.handleAddToCartClick(props.product);
+  const handleAddToCartClick = (product) => {
+    let copyProduct = JSON.parse(JSON.stringify(product));
+    // copyProduct.name = copyProduct.name + Math.random();
+    copyProduct.qty = prodQty;
+    props.handleAddToCartClick(copyProduct);
   };
 
-  return props.product ? (
+  return product ? (
     <div className="productListing">
       <div className="breadcrumbs">
         <Link to="/">{"Home / "}</Link>
         <Link
           to="/category"
           onClick={props.handleCategoryClick}
-          id={props.product.category}
+          id={product.category}
         >
-          {props.product.category}
+          {product.category}
         </Link>
         {" / "}
         <Link
           to="/category"
           onClick={props.handleCategoryClick}
-          id={props.product.category}
+          id={product.category}
         >
-          {props.product.subcategory}
+          {product.subcategory}
         </Link>
       </div>
 
       <div className="prodListingWrapper">
-        {props.product && (
+        {product && (
           <div className="prodListingLeft" style={{ height: `${imgHeight}px` }}>
             <div>
-              <div className="prodPageTitle">{props.product.name}</div>
-              <div>$ {props.product.price}</div>
+              <div className="prodPageTitle">{product.name}</div>
+              <div>${product.price}</div>
             </div>
 
             <div
               className="prodDescription"
-              dangerouslySetInnerHTML={{ __html: props.product.description }}
+              dangerouslySetInnerHTML={{ __html: product.description }}
             ></div>
 
             <div>
@@ -84,24 +91,16 @@ export default function ProductListing(props) {
 
               <Link
                 to="/viewcart"
-                onClick={() => handleAddToCartClick(props.product)}
-                // onClick={() => {
-                //   (props.product.qty = prodQty),
-                //     props.handleAddToCartClick(props.product)props.handleAddToCartClick(props.product);
-                // }}
+                onClick={() => handleAddToCartClick(product)}
               >
-                <div className="addToCartBtn">ADD TO CART +</div>
+                <div className="addToCartBtn btn">ADD TO CART +</div>
               </Link>
             </div>
           </div>
         )}
 
         <div className="prodListingRight">
-          <img
-            src={`https://erichkopp.github.io/eCommerceStore/${props.product.image}`}
-            alt={props.product.image}
-            ref={imageRef}
-          />
+          <img src={product.image} alt={product.image} ref={imageRef} />
         </div>
       </div>
     </div>

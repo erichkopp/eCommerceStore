@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Route, Switch } from "react-router-dom";
-import Nav from "./components/Nav";
+import NavDesktop from "./components/NavDesktop";
+import NavMobile from "./components/NavMobile";
 import Home from "./components/Home";
 import Category from "./components/Category";
 import ProductListing from "./components/ProductListing";
@@ -244,7 +245,8 @@ export default function App() {
 
   return (
     <div className="App">
-      <Nav
+      <NavMobile />
+      <NavDesktop
         productCategories={productCategories}
         handleCategoryClick={handleCategoryClick}
         cart={cart}

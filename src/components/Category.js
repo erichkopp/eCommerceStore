@@ -7,9 +7,15 @@ export default function Category(props) {
 
   const [imgHover, setImgHover] = useState(false);
 
+  // let allProducts = JSON.parse(JSON.stringify(props.allProducts));
+  let allProducts = props.allProducts;
+
   useEffect(() => {
     const handleResize = () => {
-      if (imageRef.current) {
+      if (
+        imageRef.current &&
+        imageRef.current.getBoundingClientRect().height > 0
+      ) {
         setImgHeight(imageRef.current.getBoundingClientRect().height);
       }
     };
@@ -24,19 +30,26 @@ export default function Category(props) {
 
   let products = [];
 
-  for (let i = 0; i < props.allProducts.length; i++) {
+  for (let i = 0; i < allProducts.length; i++) {
     if (
-      props.allProducts[i].category === props.category &&
-      props.allProducts[i].subcategory === props.subCategory
+      allProducts[i].category === props.category &&
+      allProducts[i].subcategory === props.subCategory
     ) {
-      products.push(props.allProducts[i]);
+      products.push(allProducts[i]);
     } else if (
-      props.allProducts[i].category === props.category &&
+      allProducts[i].category === props.category &&
       props.category === props.subCategory
     ) {
-      products.push(props.allProducts[i]);
+      products.push(allProducts[i]);
     }
   }
+
+  const handleAddToCartClick = (product) => {
+    let copyProduct = JSON.parse(JSON.stringify(product));
+    // copyProduct.name = copyProduct.name + Math.random();
+    copyProduct.qty = 1;
+    props.handleAddToCartClick(copyProduct);
+  };
 
   return props.category ? (
     <div className="category">
@@ -56,7 +69,7 @@ export default function Category(props) {
                 style={{ height: `${imgHeight}px` }}
               >
                 <img
-                  src={`https://erichkopp.github.io/eCommerceStore/${products[product].image}`}
+                  src={products[product].image}
                   className="catProdImage"
                   alt={products[product].name}
                   ref={imageRef}
@@ -65,7 +78,7 @@ export default function Category(props) {
                 ></img>
                 <Link
                   to="/viewcart"
-                  onClick={() => props.handleAddToCartClick(products[product])}
+                  onClick={() => handleAddToCartClick(products[product])}
                 >
                   <div
                     className="catAddToCart"
@@ -90,9 +103,6 @@ export default function Category(props) {
                 <div className="catProdName">{products[product].name}</div>
                 <div className="catProdPrice">${products[product].price}</div>
               </div>
-              {/* <div className="catProdDescription">
-                {products[product].description}
-              </div> */}
             </div>
           </Link>
         ))}

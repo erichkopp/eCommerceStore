@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-// import { BrowserRouter, Route, Link } from "react-router-dom";
-// import Nav from "./Nav";
-// import TopLinks from "./TopLinks";
+import HomePageScrollEffects from "./HomePageScrollEffects";
+import home_banner from "../img/home_banner.jpg";
 
 export default function Home(props) {
   let products = [
@@ -26,7 +25,6 @@ export default function Home(props) {
     const handleScroll = () => {
       if (window.scrollY === 0) {
         setBannerOpacity(1);
-        // setBannerPosition(50);
       } else {
         setBannerOpacity(
           (window.innerHeight - window.scrollY / 2) / window.innerHeight
@@ -44,7 +42,10 @@ export default function Home(props) {
 
   useEffect(() => {
     const handleResize = () => {
-      if (imageRef.current) {
+      if (
+        imageRef.current &&
+        imageRef.current.getBoundingClientRect().height > 0
+      ) {
         setImgHeight(imageRef.current.getBoundingClientRect().height);
       }
     };
@@ -57,15 +58,33 @@ export default function Home(props) {
     };
   });
 
+  const handleAddToCartClick = (product) => {
+    let copyProduct = JSON.parse(JSON.stringify(product));
+    // copyProduct.name = copyProduct.name + Math.random();
+    copyProduct.qty = 1;
+    props.handleAddToCartClick(copyProduct);
+  };
+
   return (
     <div className="home">
       <div className="bannerContainer">
         <img
-          src="https://erichkopp.github.io/eCommerceStore/wallpaper1.jpg"
+          src={home_banner}
           alt="Home Banner"
           className="homeBanner"
           style={{ opacity: bannerOpacity, top: `${bannerPosition}px` }}
         />
+        <div className="homeHero">
+          <div className="homeHeroText">
+            <p>
+              SPECIALIZING IN ALL SORTS OF COOL SHIT AND CAMERAS AND WHO KNOWS
+              WHAT THE FUCK ELSE!
+            </p>
+          </div>
+          <div className="homeHeroText">
+            <p>BUY SOME SHIT FROM ME PLEASE!</p>
+          </div>
+        </div>
       </div>
       <div className="homeContent">
         <div className="homeTitle">Featured Products</div>
@@ -81,7 +100,7 @@ export default function Home(props) {
                   style={{ height: `${imgHeight}px` }}
                 >
                   <img
-                    src={`https://erichkopp.github.io/eCommerceStore/${products[product].image}`}
+                    src={products[product].image}
                     className="catProdImage"
                     alt={products[product].name}
                     ref={imageRef}
@@ -90,9 +109,7 @@ export default function Home(props) {
                   ></img>
                   <Link
                     to="/viewcart"
-                    onClick={() =>
-                      props.handleAddToCartClick(products[product])
-                    }
+                    onClick={() => handleAddToCartClick(products[product])}
                   >
                     <div
                       className="catAddToCart"
@@ -119,14 +136,13 @@ export default function Home(props) {
                   <div className="catProdName">{products[product].name}</div>
                   <div className="catProdPrice">${products[product].price}</div>
                 </div>
-                {/* <div className="catProdDescription">
-                {products[product].description}
-              </div> */}
               </div>
             </Link>
           ))}
         </div>
       </div>
+
+      <HomePageScrollEffects />
     </div>
   );
 }

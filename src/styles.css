@@ -26,12 +26,12 @@ a {
   height: 100px;
 }
 
-#mainNav,
-#shopCategories {
+.navDesktop,
+.shopCategories {
   top: 0;
 }
 
-#mainNav {
+.navDesktop {
   transition: 0.4s;
   transition-timing-function: ease-in;
   display: flex;
@@ -44,19 +44,19 @@ a {
   z-index: 10;
 }
 
-#navLinks,
-#navBarRight {
+.navLinks,
+.navBarRight {
   width: 33.3%;
   height: 100%;
 }
 
-#navBarRight {
+.navBarRight {
   display: flex;
   justify-content: flex-end;
 }
 
-#navLinks ul,
-#navBarRight ul {
+.navLinks ul,
+.navBarRight ul {
   display: flex;
   list-style: none;
   padding-left: 30px;
@@ -66,10 +66,10 @@ a {
   font-size: 0.9rem;
 }
 
-#navLinks li,
-#navBarRight li,
-#navLinks a,
-#navBarRight a {
+.navLinks li,
+.navBarRight li,
+.navLinks a,
+.navBarRight a {
   padding-left: 10px;
   padding-right: 10px;
   cursor: pointer;
@@ -81,9 +81,9 @@ a {
   padding-left: 3px;
 }
 
-#shopCategories {
+.shopCategories {
   position: fixed;
-  box-shadow: rgba(0, 0, 0, 0.3) 0 5px 15px;
+  /* box-shadow: rgba(0, 0, 0, 0.3) 0 5px 15px; */
   z-index: 9;
   transition: 0.2s;
   transition-timing-function: ease-in;
@@ -93,19 +93,31 @@ a {
   min-height: 250px;
   display: flex;
   justify-content: space-between;
-  padding-left: 10px;
-  padding-right: 10px;
+  /* padding-left: 10px; */
+  /* padding-right: 10px; */
   font-size: 0.9rem;
   border-top: 1px solid #e4e4e4;
   border-bottom: 1px solid #e4e4e4;
 }
 
-#shopCategories ul {
+.shopCategories ul {
   list-style: none;
   display: inline-block;
   width: 100%;
-  margin-left: 10px;
-  margin-right: 10px;
+  margin-left: 2%;
+  margin-right: 2%;
+}
+
+.shopCategoriesImage {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.shopCategoriesImage img {
+  width: 80%;
+  height: auto;
 }
 
 .bannerContainer {
@@ -468,4 +480,25 @@ a {
   font-size: 1.5rem;
   padding-left: 20px;
   padding-right: 20px;
+}
+
+/* HOME PAGE SCROLL EFFECTS */
+
+.homePageScrollEffects {
+  height: 400vh;
+  display: flex;
+  justify-content: center;
+}
+
+.img01 {
+  height: 50vh;
+  width: auto;
+  /* transform: translate(50%); */
+}
+
+/* MOBILE STYLES */
+@media (max-width: 1050px) {
+  .navDesktop {
+    display: none;
+  }
 }

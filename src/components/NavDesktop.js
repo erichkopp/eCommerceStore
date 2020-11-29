@@ -1,15 +1,15 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import logo from "../img/logo.jpg";
+import img01 from "../img/homePageImages/img01.jpeg";
 
-export default function Nav(props) {
+export default function NavDesktop(props) {
+  const [cartQty, setCartQty] = useState(0);
   const [show, setShow] = useState(false);
   const [windowScroll, setWindowScroll] = useState(false);
   const [logoFadeIn, setLogoFadeIn] = useState(true);
 
   useEffect(() => {
-    // const handleScroll = () => {
-    //   window.scrollY > 50 ? setWindowScroll(true) : setWindowScroll(false);
-    // };
     const handleScroll = () => {
       if (window.scrollY > 50) {
         setWindowScroll(true);
@@ -23,7 +23,6 @@ export default function Nav(props) {
         };
       }
     };
-
     window.addEventListener("scroll", handleScroll);
 
     return () => {
@@ -31,17 +30,34 @@ export default function Nav(props) {
     };
   }, []);
 
+  useEffect(() => {
+    const cartItems = (cart) => {
+      let qty = 0;
+      for (let i = 0; i < cart.length; i++) {
+        qty += cart[i].qty;
+      }
+      setCartQty(qty);
+    };
+    cartItems(props.cart);
+  });
+
   return (
     <>
       <nav
-        id="mainNav"
-        style={
-          windowScroll
-            ? { borderBottom: "1px solid #e4e4e4", height: "50px" }
-            : { borderBottom: "1px solid #ffffff" }
-        }
+        className="navDesktop"
+        style={{
+          // boxShadow:
+          //   windowScroll && !show ? "rgba(0, 0, 0, 0.3) 0 1px 15px" : "none",
+          borderBottom: windowScroll ? "1px solid #e4e4e4" : "",
+          height: windowScroll ? "50px" : ""
+        }}
+        // style={
+        //   windowScroll
+        //     ? { boxShadow: "rgba(0, 0, 0, 0.3) 5px 5px 15px", height: "50px" }
+        //     : { borderBottom: "1px solid #ffffff" }
+        // }
       >
-        <div id="navLinks">
+        <div className="navLinks">
           <ul>
             <Link to="/">
               <li>Home</li>
@@ -66,37 +82,28 @@ export default function Nav(props) {
               visibility: windowScroll ? "hidden" : "visible"
             }}
           >
-            {/* <div id="logo">LOGO</div> */}
-            <img
-              id="logo"
-              src="https://erichkopp.github.io/eCommerceStore/logo.jpg"
-              alt="Vintage Camera Stores Logo"
-            />
+            <img id="logo" src={logo} alt="Vintage Camera Stores Logo" />
           </Link>
         )}
 
-        <div id="navBarRight">
+        <div className="navBarRight">
           <ul>
             <li>Search</li>
             <Link to="/viewcart">
-              <li>Cart ({props.cart.length})</li>
+              <li>Cart ({cartQty})</li>
             </Link>
           </ul>
         </div>
       </nav>
 
+      {/* SHOP HOVER MENU */}
       <div
-        // style={
-        //   show
-        //     ? { display: "flex", opacity: 1 }
-        //     : { visibility: "hidden", opacity: 0 }
-        // }
         style={{
           marginTop: windowScroll ? "50px" : "120px",
           opacity: show ? "1" : "0",
           visibility: show ? "" : "hidden"
         }}
-        id="shopCategories"
+        className="shopCategories"
         onMouseEnter={() => setShow(true)}
         onMouseLeave={() => setShow(false)}
       >
@@ -129,6 +136,9 @@ export default function Nav(props) {
             ))}
           </ul>
         ))}
+        <div className="shopCategoriesImage">
+          <img src={img01} alt="Menu" />
+        </div>
       </div>
     </>
   );
