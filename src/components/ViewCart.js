@@ -40,7 +40,7 @@ export default function ViewCart(props) {
       </table>
       <div className="viewCartButtons">
         <div className="clearCart btn" onClick={props.handleClearCart}>
-          Clear Cart
+          CLEAR CART
         </div>
         <div className="checkout btn">CHECKOUT</div>
       </div>

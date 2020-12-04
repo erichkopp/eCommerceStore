@@ -67,7 +67,7 @@ export default function ProductListing(props) {
               dangerouslySetInnerHTML={{ __html: product.description }}
             ></div>
 
-            <div>
+            <div className="qtyCartBtnContainer">
               <div>Quantity:</div>
               <div className="prodQtyWrapper">
                 <div className="prodQtyAmount">{prodQty}</div>

@@ -186,7 +186,6 @@ export default function App() {
   const [subCategory, setSubcategory] = useState();
   const [product, setProduct] = useState();
   const [cart, setCart] = useState([]);
-  // console.log(cart);
 
   const handleCategoryClick = (e) => {
     const navCat = e.target.id;
@@ -245,7 +244,12 @@ export default function App() {
 
   return (
     <div className="App">
-      <NavMobile />
+      <NavMobile
+        productCategories={productCategories}
+        handleCategoryClick={handleCategoryClick}
+        cart={cart}
+        footerRightLinks={footerRightLinks}
+      />
       <NavDesktop
         productCategories={productCategories}
         handleCategoryClick={handleCategoryClick}
@@ -258,6 +262,7 @@ export default function App() {
             allProducts={allProducts}
             handleProductClick={handleProductClick}
             handleAddToCartClick={handleAddToCartClick}
+            handleCategoryClick={handleCategoryClick}
           />
         </Route>
         <Route path="/category">

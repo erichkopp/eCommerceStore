@@ -68,7 +68,7 @@ export default function NavDesktop(props) {
               onMouseLeave={() => setShow(false)}
             >
               Shop
-              <i class="fas fa-chevron-down"></i>
+              <i className="fas fa-chevron-down"></i>
             </li>
             <li>About</li>
             <li>Contact</li>

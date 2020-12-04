@@ -26,10 +26,17 @@ export default function Home(props) {
       if (window.scrollY === 0) {
         setBannerOpacity(1);
       } else {
-        setBannerOpacity(
-          (window.innerHeight - window.scrollY / 2) / window.innerHeight
-        );
-        setBannerPosition((bannerPosition - window.scrollY) / 20);
+        if (window.innerWidth > 1050) {
+          setBannerOpacity(
+            (window.innerHeight - window.scrollY / 2) / window.innerHeight
+          );
+          setBannerPosition((bannerPosition - window.scrollY) / 20);
+        } else {
+          setBannerOpacity(
+            (window.innerHeight - window.scrollY) / window.innerHeight
+          );
+          setBannerPosition((bannerPosition - window.scrollY) / 6);
+        }
       }
     };
 
@@ -76,13 +83,16 @@ export default function Home(props) {
         />
         <div className="homeHero">
           <div className="homeHeroText">
+            <h2>TIMELESS STYLE</h2>
             <p>
-              SPECIALIZING IN ALL SORTS OF COOL SHIT AND CAMERAS AND WHO KNOWS
-              WHAT THE FUCK ELSE!
+              The magic of film photography never goes out of style. Find the
+              camera and film combination that's right for you.
             </p>
-          </div>
-          <div className="homeHeroText">
-            <p>BUY SOME SHIT FROM ME PLEASE!</p>
+            <Link to="/category" onClick={props.handleCategoryClick}>
+              <div className="shopNow btn" id="Cameras">
+                Cameras
+              </div>
+            </Link>
           </div>
         </div>
       </div>
@@ -142,7 +152,7 @@ export default function Home(props) {
         </div>
       </div>
 
-      <HomePageScrollEffects />
+      {/* <HomePageScrollEffects /> */}
     </div>
   );
 }

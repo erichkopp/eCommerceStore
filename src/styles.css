@@ -1,3 +1,7 @@
+.navMobile {
+  display: none;
+}
+
 * {
   border: 0;
   padding: 0;
@@ -140,29 +144,51 @@ a {
   margin-top: 120px;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  /* align-items: center; */
   position: relative;
   justify-content: center;
 }
 
 .homeHeroText {
-  box-shadow: -5px -5px #000000;
-  background: #ffffff;
-  padding: 1%;
-  margin: 1%;
-  transform: skewX(-28deg);
+  position: relative;
+  background: rgba(255, 255, 255, 0.8);
+  width: 40%;
+  padding: 2rem;
+  padding-bottom: 75px;
+}
+
+.homeHeroText h2::after {
+  display: flex;
+  /* justify-content: center; */
+  font-weight: 900;
+  content: "—";
+  width: 100%;
 }
 
 .homeHeroText p {
-  transform: skewX(28deg);
+  line-height: 200%;
+}
+
+.shopNow {
+  position: absolute;
+  right: -10px;
+  bottom: 15px;
+  color: #222222 !important;
+}
+
+.shopNow:before {
+  content: "Shop Now";
+  color: #ffffff;
+  /* display: flex; */
+  position: absolute;
 }
 
 .homeContent {
   /* margin-top: 100vh; */
   position: relative;
   background: #ffffff;
-  padding-top: 120px;
-  padding-bottom: 120px;
+  /* padding-top: 120px; */
+  /* padding-bottom: 120px; */
 }
 
 .homeTitle {
@@ -200,10 +226,12 @@ a {
 .category,
 .productListing,
 .viewCart,
-.pageNotFound {
+.pageNotFound,
+.homeContent {
   padding-top: 120px;
   padding-bottom: 120px;
-  min-height: calc(100vh - 240px - 30vh);
+  /* min-height: calc(100vh - 240px - 30vh); */
+  min-height: calc(100vh - 240px);
 }
 
 .category,
@@ -413,12 +441,13 @@ a {
   justify-content: space-between;
 }
 
+.shopNow,
 .clearCart,
 .checkout {
   color: #ffffff;
   padding-left: 10px;
   padding-right: 10px;
-  width: fit-content;
+  width: 100px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -435,6 +464,7 @@ a {
   background: red;
 }
 
+.shopNow,
 .checkout {
   background: #222222;
 }
@@ -444,7 +474,7 @@ a {
   position: relative;
   color: #ffffff;
   background: #222222;
-  height: 30vh;
+  /* height: 30vh; */
   align-items: center;
   display: flex;
   padding-left: 30px;
@@ -498,7 +528,261 @@ a {
 
 /* MOBILE STYLES */
 @media (max-width: 1050px) {
-  .navDesktop {
+  .navDesktop,
+  .shopCategories {
     display: none;
+  }
+
+  * {
+    cursor: default;
+  }
+
+  .category,
+  .productListing,
+  .homeContent,
+  .viewCart,
+  .pageNotFound {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  .navMobile {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    height: 100px;
+    width: 100%;
+    z-index: 10;
+    top: 0;
+    background: #ffffff;
+    opacity: 1;
+    /* border-bottom: 1px solid #e4e4e4; */
+  }
+
+  .mobileNavLogo {
+    height: 80%;
+    width: auto;
+  }
+
+  .hamburgerMenu,
+  .exitBTN {
+    z-index: 10;
+    /* position: absolute;
+    left: 0;
+    top: 0; */
+  }
+
+  .mobileNavIconsLeft,
+  .mobileNavIconsRight {
+    width: 33.3%;
+  }
+
+  .mobileNavIconsRight {
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  .mobileNavIcons {
+    font-size: 2rem;
+    padding: 0.5rem;
+  }
+
+  .mobileNavCartQty {
+    position: absolute;
+    right: 17px;
+    height: 10px;
+    width: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #ffffff;
+    border-radius: 50%;
+    font-weight: 900;
+    top: 40px;
+  }
+
+  .mobileMenu {
+    font-size: 1.25rem;
+    text-transform: uppercase;
+    font-weight: 900;
+    z-index: 9;
+    position: fixed;
+    top: 100px;
+    width: 100%;
+    height: calc(100% - 100px);
+    background: #ffffff;
+    overflow: scroll;
+  }
+
+  .mobileMenu::-webkit-scrollbar {
+    display: none;
+  }
+
+  .mobileMenu ul {
+    list-style: none;
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  .mobileMenu ul li {
+    border-bottom: 1px solid #e4e4e4;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+  }
+
+  .mobileMenu ul li:last-child {
+    border-bottom: none;
+  }
+
+  .shopMobileCats {
+    margin-left: 3rem;
+    font-size: 1rem;
+    text-transform: capitalize;
+    /* padding-top: 1rem;
+    padding-bottom: 1rem; */
+  }
+
+  .shopMobileCats div,
+  .shopMobileSubcats div {
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+  }
+
+  .shopMobileSubcats {
+    padding-left: 3rem;
+    border-left: 1px solid #e4e4e4;
+  }
+
+  .mobileNavSocialLinks {
+    margin-top: 1rem;
+    /* font-size: 2rem; */
+  }
+
+  .mobileNavSocialLinks div {
+    font-size: 0.9rem;
+  }
+
+  .mobileNavSocialLinks div p {
+    text-transform: none;
+    line-height: 150%;
+  }
+
+  .mobileNavSocialLinks div p:first-child {
+    margin-top: 1rem;
+  }
+
+  .mobileNavSocialLinks div p:last-child {
+    margin-bottom: 1rem;
+  }
+
+  .mobileNavSocialLinks a {
+    padding: 1rem;
+    font-size: 2rem;
+  }
+
+  .bannerContainer {
+    padding-bottom: 0;
+  }
+
+  .homeHero {
+    height: calc(100vh - 100px);
+    margin-top: 100px;
+  }
+
+  .homeHeroText {
+    width: 75%;
+  }
+
+  /* .homeHeroText h2::after { */
+  /* display: flex; */
+  /* justify-content: center; */
+  /* font-weight: 900; */
+  /* content: "—"; */
+  /* width: 100%; */
+  /* } */
+
+  .categoryListingsWrapper {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .catImageContainer {
+    height: auto !important;
+  }
+
+  .catProdImage {
+    width: 100%;
+  }
+
+  .catAddToCart {
+    display: none;
+  }
+
+  .prodListingWrapper {
+    flex-direction: column-reverse;
+  }
+
+  .prodListingLeft {
+    margin-top: 5rem;
+    height: 100% !important;
+  }
+
+  .prodListingRight {
+    padding-left: 0;
+  }
+
+  .prodListingRight img {
+    width: 100%;
+    height: auto;
+    max-height: none;
+  }
+
+  .qtyCartBtnContainer {
+    padding-top: 50px;
+  }
+
+  .viewCartTable thead tr th {
+    font-size: 0.75rem;
+  }
+
+  .viewCartImages {
+    width: 25%;
+    height: auto;
+  }
+
+  .footer {
+    flex-direction: column;
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  .footerLeft,
+  .footerRight {
+    width: auto;
+  }
+
+  .footerLeft ul {
+    flex-direction: column;
+    margin-bottom: 2rem;
+  }
+
+  /* MENU ANIMATION CLASSES */
+  .mobileMenu-enter {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  .mobileMenu-enter-active {
+    transform: translateY(0);
+    opacity: 1;
+    transition: 0.5s;
+  }
+  .mobileMenu-exit {
+    opacity: 1;
+  }
+  .mobileMenu-exit-active {
+    opacity: 0;
+    transform: translateY(-100%);
+    transition: 0.5s;
   }
 }
