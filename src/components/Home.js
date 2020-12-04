@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import HomePageScrollEffects from "./HomePageScrollEffects";
+// import HomePageScrollEffects from "./HomePageScrollEffects";
 import home_banner from "../img/home_banner.jpg";
 
 export default function Home(props) {
@@ -67,7 +67,6 @@ export default function Home(props) {
 
   const handleAddToCartClick = (product) => {
     let copyProduct = JSON.parse(JSON.stringify(product));
-    // copyProduct.name = copyProduct.name + Math.random();
     copyProduct.qty = 1;
     props.handleAddToCartClick(copyProduct);
   };

@@ -6,7 +6,6 @@
   border: 0;
   padding: 0;
   margin: 0;
-  /* box-sizing: border-box; */
   font-family: "Montserrat", sans-serif;
   font-weight: 300;
   letter-spacing: 0.1rem;
@@ -87,18 +86,14 @@ a {
 
 .shopCategories {
   position: fixed;
-  /* box-shadow: rgba(0, 0, 0, 0.3) 0 5px 15px; */
   z-index: 9;
   transition: 0.2s;
   transition-timing-function: ease-in;
   background: #ffffff;
-  /* width: calc(100vw - 35px); */
   width: 100%;
   min-height: 250px;
   display: flex;
   justify-content: space-between;
-  /* padding-left: 10px; */
-  /* padding-right: 10px; */
   font-size: 0.9rem;
   border-top: 1px solid #e4e4e4;
   border-bottom: 1px solid #e4e4e4;
@@ -144,7 +139,6 @@ a {
   margin-top: 120px;
   display: flex;
   flex-direction: column;
-  /* align-items: center; */
   position: relative;
   justify-content: center;
 }
@@ -159,7 +153,6 @@ a {
 
 .homeHeroText h2::after {
   display: flex;
-  /* justify-content: center; */
   font-weight: 900;
   content: "—";
   width: 100%;
@@ -179,16 +172,12 @@ a {
 .shopNow:before {
   content: "Shop Now";
   color: #ffffff;
-  /* display: flex; */
   position: absolute;
 }
 
 .homeContent {
-  /* margin-top: 100vh; */
   position: relative;
   background: #ffffff;
-  /* padding-top: 120px; */
-  /* padding-bottom: 120px; */
 }
 
 .homeTitle {
@@ -230,7 +219,6 @@ a {
 .homeContent {
   padding-top: 120px;
   padding-bottom: 120px;
-  /* min-height: calc(100vh - 240px - 30vh); */
   min-height: calc(100vh - 240px);
 }
 
@@ -285,7 +273,6 @@ a {
   display: block;
   width: calc(100vw / 4);
   max-width: 500px;
-  /* height: auto; */
 }
 
 .catAddToCart {
@@ -408,7 +395,6 @@ a {
 
 .viewCartTable {
   width: 100%;
-  /* padding-top: 10vh; */
   padding-bottom: 120px;
 }
 
@@ -474,7 +460,6 @@ a {
   position: relative;
   color: #ffffff;
   background: #222222;
-  /* height: 30vh; */
   align-items: center;
   display: flex;
   padding-left: 30px;
@@ -495,8 +480,6 @@ a {
 }
 
 .footerLeft ul li {
-  /* padding-left: 10px; */
-  /* padding-right: 10px; */
   text-align: center;
   padding: 10px;
 }
@@ -523,7 +506,6 @@ a {
 .img01 {
   height: 50vh;
   width: auto;
-  /* transform: translate(50%); */
 }
 
 /* MOBILE STYLES */
@@ -557,7 +539,6 @@ a {
     top: 0;
     background: #ffffff;
     opacity: 1;
-    /* border-bottom: 1px solid #e4e4e4; */
   }
 
   .mobileNavLogo {
@@ -568,9 +549,6 @@ a {
   .hamburgerMenu,
   .exitBTN {
     z-index: 10;
-    /* position: absolute;
-    left: 0;
-    top: 0; */
   }
 
   .mobileNavIconsLeft,
@@ -639,8 +617,6 @@ a {
     margin-left: 3rem;
     font-size: 1rem;
     text-transform: capitalize;
-    /* padding-top: 1rem;
-    padding-bottom: 1rem; */
   }
 
   .shopMobileCats div,
@@ -656,7 +632,6 @@ a {
 
   .mobileNavSocialLinks {
     margin-top: 1rem;
-    /* font-size: 2rem; */
   }
 
   .mobileNavSocialLinks div {
@@ -693,14 +668,6 @@ a {
   .homeHeroText {
     width: 75%;
   }
-
-  /* .homeHeroText h2::after { */
-  /* display: flex; */
-  /* justify-content: center; */
-  /* font-weight: 900; */
-  /* content: "—"; */
-  /* width: 100%; */
-  /* } */
 
   .categoryListingsWrapper {
     display: flex;

@@ -7,7 +7,6 @@ export default function Category(props) {
 
   const [imgHover, setImgHover] = useState(false);
 
-  // let allProducts = JSON.parse(JSON.stringify(props.allProducts));
   let allProducts = props.allProducts;
 
   useEffect(() => {
@@ -46,7 +45,6 @@ export default function Category(props) {
 
   const handleAddToCartClick = (product) => {
     let copyProduct = JSON.parse(JSON.stringify(product));
-    // copyProduct.name = copyProduct.name + Math.random();
     copyProduct.qty = 1;
     props.handleAddToCartClick(copyProduct);
   };
