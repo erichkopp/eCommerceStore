@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 // import HomePageScrollEffects from "./HomePageScrollEffects";
 import home_banner from "../img/home_banner.jpg";
+import ContactForm from "./ContactForm";
+import Map from "./Map";
 
 export default function Home(props) {
   let products = [
@@ -95,6 +97,7 @@ export default function Home(props) {
           </div>
         </div>
       </div>
+
       <div className="homeContent">
         <div className="homeTitle">Featured Products</div>
         <div className="categoryListingsWrapper">
@@ -152,6 +155,11 @@ export default function Home(props) {
       </div>
 
       {/* <HomePageScrollEffects /> */}
+
+      <div className="contactFormMapContainer">
+        <ContactForm />
+        <Map />
+      </div>
     </div>
   );
 }

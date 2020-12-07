@@ -2,7 +2,6 @@ import React from "react";
 import { Link, Redirect } from "react-router-dom";
 
 export default function ViewCart(props) {
-  // console.log(props.cart);
   return props.cart.length > 0 ? (
     <div className="viewCart">
       <div className="viewCartTitle">Shopping Cart</div>

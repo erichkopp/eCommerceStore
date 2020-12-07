@@ -9,6 +9,7 @@
   font-family: "Montserrat", sans-serif;
   font-weight: 300;
   letter-spacing: 0.1rem;
+  box-sizing: border-box;
 }
 
 a {
@@ -121,7 +122,7 @@ a {
 
 .bannerContainer {
   height: 100vh;
-  padding-bottom: 100vh;
+  padding-bottom: 200vh;
   background: #222222;
 }
 
@@ -219,7 +220,7 @@ a {
 .homeContent {
   padding-top: 120px;
   padding-bottom: 120px;
-  min-height: calc(100vh - 240px);
+  min-height: 100vh;
 }
 
 .category,
@@ -417,7 +418,7 @@ a {
 }
 
 .viewCartImages {
-  padding-right: 2vw;
+  margin-right: 2vw;
   height: 200px;
   width: 200px;
 }
@@ -433,7 +434,7 @@ a {
   color: #ffffff;
   padding-left: 10px;
   padding-right: 10px;
-  width: 100px;
+  width: 130px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -453,6 +454,98 @@ a {
 .shopNow,
 .checkout {
   background: #222222;
+}
+
+.contactFormMapContainer {
+  background: #ffffff;
+  z-index: 1;
+  position: relative;
+  display: flex;
+  justify-content: space-evenly;
+  padding-bottom: 120px;
+}
+
+.contactFormContainer,
+.leaflet-container {
+  height: 80vh;
+  width: 100%;
+  margin-left: 50px;
+  margin-right: 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.contactFormTitle {
+  display: grid;
+  justify-content: center;
+  font-size: 2rem;
+  margin-bottom: 5%;
+}
+
+.contactFormTitle::after {
+  display: flex;
+  justify-content: center;
+  font-weight: 900;
+  content: "—";
+  width: 100%;
+}
+
+.contactFormContainer form {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.contactFormContainer form div {
+  display: flex;
+  flex-direction: column;
+}
+
+.contactFormContainer form div:nth-child(3),
+.contactFormContainer form div:nth-child(3) textarea {
+  height: 100%;
+}
+
+.contactFormContainer form div input[type="text"],
+.contactFormContainer form div textarea {
+  width: 100%;
+  padding: 12px 20px;
+  border: 1px solid #e4e4e4;
+  border-radius: 4px;
+  margin-top: 10px;
+  margin-bottom: 30px;
+  resize: vertical;
+}
+
+.contactFormContainer form input[type="submit"] {
+  background: #222222;
+  color: #ffffff;
+  width: 100%;
+  /* display: flex; */
+  /* align-items: center; */
+  /* justify-content: center; */
+  font-size: 0.8rem;
+  min-height: 50px;
+}
+
+.contactFormContainer form input[type="submit"]:hover {
+  cursor: pointer;
+}
+
+.mapTooltip {
+  border-radius: 10px;
+}
+
+.mapTooltip h3 {
+  font-weight: 900;
+}
+
+.mapTooltip h3,
+.mapTooltip p {
+  display: flex;
+  justify-content: center;
 }
 
 .footer {
@@ -657,7 +750,7 @@ a {
   }
 
   .bannerContainer {
-    padding-bottom: 0;
+    padding-bottom: 100vh;
   }
 
   .homeHero {
@@ -718,6 +811,19 @@ a {
     height: auto;
   }
 
+  .contactFormMapContainer {
+    flex-direction: column-reverse;
+  }
+
+  .contactFormContainer,
+  .leaflet-container {
+    width: calc(100% - 100px);
+  }
+
+  .contactFormContainer {
+    margin-top: 120px;
+  }
+
   .footer {
     flex-direction: column;
     padding-left: 0;
@@ -751,5 +857,12 @@ a {
     opacity: 0;
     transform: translateY(-100%);
     transition: 0.5s;
+  }
+}
+
+@media only screen and (min-width: 1350px) {
+  .productListing {
+    padding-left: 10rem;
+    padding-right: 10rem;
   }
 }
