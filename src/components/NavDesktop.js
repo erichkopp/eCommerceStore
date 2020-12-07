@@ -46,16 +46,9 @@ export default function NavDesktop(props) {
       <nav
         className="navDesktop"
         style={{
-          // boxShadow:
-          //   windowScroll && !show ? "rgba(0, 0, 0, 0.3) 0 1px 15px" : "none",
           borderBottom: windowScroll ? "1px solid #e4e4e4" : "",
           height: windowScroll ? "50px" : ""
         }}
-        // style={
-        //   windowScroll
-        //     ? { boxShadow: "rgba(0, 0, 0, 0.3) 5px 5px 15px", height: "50px" }
-        //     : { borderBottom: "1px solid #ffffff" }
-        // }
       >
         <div className="navLinks">
           <ul>

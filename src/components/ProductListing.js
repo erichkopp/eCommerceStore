@@ -7,8 +7,6 @@ export default function ProductListing(props) {
   const [imgHeight, setImgHeight] = useState("500");
   const imageRef = React.createRef();
 
-  // Create immutable deep copy
-  // let product = JSON.parse(JSON.stringify(props.product));
   let product = props.product;
 
   useEffect(() => {
@@ -28,7 +26,6 @@ export default function ProductListing(props) {
 
   const handleAddToCartClick = (product) => {
     let copyProduct = JSON.parse(JSON.stringify(product));
-    // copyProduct.name = copyProduct.name + Math.random();
     copyProduct.qty = prodQty;
     props.handleAddToCartClick(copyProduct);
   };
