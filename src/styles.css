@@ -116,8 +116,9 @@ a {
 }
 
 .shopCategoriesImage img {
-  width: 80%;
+  width: 100%;
   height: auto;
+  padding: 2rem;
 }
 
 .bannerContainer {
@@ -265,7 +266,8 @@ a {
 
 .catImageContainer {
   /* HEIGHT NEEDS TO BE DYNAMIC */
-  height: 300px;
+  /* height: 300px; */
+  height: 100%;
   overflow: hidden;
 }
 
