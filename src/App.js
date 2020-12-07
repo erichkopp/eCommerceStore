@@ -173,7 +173,7 @@ const footerRightLinks = [
   },
   {
     icon: "fab fa-github",
-    url: "https://github.com/erichkopp"
+    url: "https://github.com/erichkopp/eCommerceStore"
   },
   {
     icon: "fab fa-linkedin-in",
