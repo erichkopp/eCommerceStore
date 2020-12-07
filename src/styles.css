@@ -811,7 +811,7 @@ a {
   }
 
   .contactFormMapContainer {
-    flex-direction: column-reverse;
+    flex-direction: column;
   }
 
   .contactFormContainer,
