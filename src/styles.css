@@ -819,7 +819,8 @@ a {
     width: calc(100% - 100px);
   }
 
-  .contactFormContainer {
+  .contactFormContainer,
+  .leaflet-container {
     margin-top: 120px;
   }
 
